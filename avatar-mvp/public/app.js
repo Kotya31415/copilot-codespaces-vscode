@@ -35,10 +35,10 @@ function setSpeaking(open) {
   mouth.classList.toggle("closed", !open);
 }
 
-function stopAllAudio() {
+function stopAllAudio({ updateStatus = true } = {}) {
   window.speechSynthesis?.cancel();
   setSpeaking(false);
-  statusEl.textContent = "停止";
+  if (updateStatus) statusEl.textContent = "停止";
 }
 
 async function loadConfig() {
@@ -123,8 +123,8 @@ function setupSpeechRecognition() {
 
   recognition.onstart = () => {
     listening = true;
+    stopAllAudio({ updateStatus: false }); // 割り込み実装
     statusEl.textContent = "聞き取り中";
-    stopAllAudio(); // 割り込み実装
   };
 
   recognition.onresult = (event) => {
@@ -151,10 +151,15 @@ textInput.addEventListener("keydown", (e) => {
 
 micBtn.addEventListener("click", () => {
   if (!recognition) return;
-  if (listening) {
-    recognition.stop();
-  } else {
-    recognition.start();
+  try {
+    if (listening) {
+      recognition.stop();
+    } else {
+      recognition.start();
+    }
+  } catch (error) {
+    addLog("assistant", `STTエラー: ${error.message}`);
+    statusEl.textContent = "待機中";
   }
 });
 

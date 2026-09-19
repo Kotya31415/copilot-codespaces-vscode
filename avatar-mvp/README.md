@@ -16,13 +16,13 @@ ChatGPT連携の2DアバターWebアプリです。
 
 ## ディレクトリ構成
 
-- `/home/runner/work/copilot-codespaces-vscode/copilot-codespaces-vscode/avatar-mvp/server.js`  
+- `avatar-mvp/server.js`  
   APIと静的配信サーバー
-- `/home/runner/work/copilot-codespaces-vscode/copilot-codespaces-vscode/avatar-mvp/public/index.html`  
+- `avatar-mvp/public/index.html`  
   UI構造
-- `/home/runner/work/copilot-codespaces-vscode/copilot-codespaces-vscode/avatar-mvp/public/styles.css`  
+- `avatar-mvp/public/styles.css`  
   見た目・感情カラー・口パク表示
-- `/home/runner/work/copilot-codespaces-vscode/copilot-codespaces-vscode/avatar-mvp/public/app.js`  
+- `avatar-mvp/public/app.js`  
   UI制御（送信、音声、割り込み、設定反映）
 
 ## 動作要件
@@ -33,16 +33,30 @@ ChatGPT連携の2DアバターWebアプリです。
 
 ## 実行手順（ローカル）
 
-1. 作業ディレクトリへ移動
+1. 作業ディレクトリへ移動（Linux / macOS / Windows共通）
 
 ```bash
-cd /home/runner/work/copilot-codespaces-vscode/copilot-codespaces-vscode/avatar-mvp
+cd avatar-mvp
 ```
 
 2. 環境変数ファイルを作成
 
+Linux / macOS:
+
 ```bash
 cp .env.example .env
+```
+
+Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Windows コマンドプロンプト (cmd):
+
+```cmd
+copy .env.example .env
 ```
 
 3. `.env` を編集

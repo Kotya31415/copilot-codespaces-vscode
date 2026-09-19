@@ -29,9 +29,9 @@ GitHub Copilot can help you code by offering autocomplete-style suggestions. You
 
 This repository now also includes an implementation sample at:
 
-- `/home/runner/work/copilot-codespaces-vscode/copilot-codespaces-vscode/avatar-mvp`
+- `avatar-mvp`
 
-See `/home/runner/work/copilot-codespaces-vscode/copilot-codespaces-vscode/avatar-mvp/README.md` for architecture, setup, and run instructions.
+See `avatar-mvp/README.md` for architecture, setup, and run instructions.
 
 - **Who this is for**: Developers, DevOps Engineers, Software development managers, Testers.
 - **What you'll learn**: How to install Copilot into a Codespace, accept suggestions from code, accept suggestions from comments.
