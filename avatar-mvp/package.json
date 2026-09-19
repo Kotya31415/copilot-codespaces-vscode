@@ -1,0 +1,10 @@
+{
+  "name": "chatgpt-avatar-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Web MVP for a ChatGPT-powered avatar with speech, emotion, and interruption.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
