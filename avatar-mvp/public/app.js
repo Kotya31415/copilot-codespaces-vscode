@@ -4,6 +4,7 @@ const userId = localStorage.getItem(userIdKey) || crypto.randomUUID();
 localStorage.setItem(userIdKey, userId);
 
 const avatar = document.getElementById("avatar");
+const avatarImage = document.getElementById("avatarImage");
 const mouth = document.getElementById("mouth");
 const statusEl = document.getElementById("status");
 const logEl = document.getElementById("log");
@@ -43,6 +44,16 @@ function stopAllAudio() {
 async function loadConfig() {
   const res = await fetch("/api/config");
   const cfg = await res.json();
+  const imageUrl = typeof cfg?.avatar?.imageUrl === "string" ? cfg.avatar.imageUrl.trim() : "";
+  if (imageUrl) {
+    avatarImage.src = imageUrl;
+    avatarImage.hidden = false;
+    avatar.classList.add("has-image");
+  } else {
+    avatarImage.removeAttribute("src");
+    avatarImage.hidden = true;
+    avatar.classList.remove("has-image");
+  }
   configText.textContent = `構成: ${cfg.avatar.type}/${cfg.avatar.platform} | STT:${cfg.voice.stt} | TTS:${cfg.voice.tts} | Mode:${cfg.extensionMode}`;
 }
 

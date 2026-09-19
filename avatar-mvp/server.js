@@ -30,6 +30,7 @@ await loadDotEnv();
 const PORT = Number(process.env.PORT || 3000);
 const MODEL = process.env.OPENAI_MODEL || "gpt-4.1-mini";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const AVATAR_IMAGE_URL = (process.env.AVATAR_IMAGE_URL || "").trim();
 
 const sessionMemory = new Map();
 const longTermMemory = new Map();
@@ -38,7 +39,7 @@ const maxRequestsPerWindow = 30;
 const requestCounters = new Map();
 
 const appConfig = {
-  avatar: { type: "2D", platform: "web" },
+  avatar: { type: "2D", platform: "web", imageUrl: AVATAR_IMAGE_URL || null },
   voice: { stt: "Web Speech API", tts: "Web Speech API" },
   latencyBudgetMs: 2000,
   languages: ["ja", "en"],
